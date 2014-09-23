@@ -10,7 +10,7 @@ exercício para o curso de Ciência da Computação - UFFS, na matéria de Progr
 Você pode compilar o FIKKEN com qualquer IDE, porém o método mais fácil é utilizando o javac.
 É simples, abra o prompt de comando, navegue até a pasta principal do FIKKEN, então execute:
 ```
-javac Centrum.java
+javac Fikken.java
 ```
 Isso irá compilar o código. Para executá-lo, digite:
 ```
