@@ -14,7 +14,12 @@ public class Interpretador{
 	}
 
 	public void tokens(string c){
+		String file[] = a.split(" ");
+		int i;
 
+		for(i = 0; i < file.length; i++){
+			
+		}
 
 	}
 
