@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.Scanner;	
 
-public class Centrum{
+public class Fikken{
 
 	public static void main(String[] args) {
 		
