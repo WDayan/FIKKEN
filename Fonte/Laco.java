@@ -2,7 +2,7 @@ class Laco{
 	private String p[];
 	private int t;	
 
-	public Fluxo(){
+	public Laco(){
 		p = new String[1000];
 		t = -1;
 	}
@@ -15,7 +15,9 @@ class Laco{
 	public String pop(){
 		if(this.t != -1){
 			this.t--;
-			return p[this.t + 1];
+			return (p[this.t + 1]);
+		}else{
+			return ",";
 		}
 	}
 	

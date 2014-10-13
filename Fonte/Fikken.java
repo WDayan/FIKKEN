@@ -20,7 +20,7 @@ public class Fikken{
 				comandos[i] = conteudo.nextLine();
 				i++;
 			}
-			fi.interpreta(comandos);
+			f.interpreta(comandos);
 		
 		}catch(Exception e){
 				System.out.println("Nao e possivel ler o arquivo: " + (args.length > 0 ? args[0] : "(desconhecido)"));

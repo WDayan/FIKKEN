@@ -1,12 +1,22 @@
+/*
+*
+*
+*
+*	Classe usada para declarar variaveis, que podem ser inicializadas sem nome nem valor.
+*	As variaveis so podem ser do tipo double.
+*
+*/
+
+
 class Variavel{
 	private String nome;
-	private String valor;
+	private double valor;
 
 	public void setNome(String n){
 		this.nome = n;
 	}
 
-	public void setValor(String v){
+	public void setValor(double v){
 		this.valor = v;
 	}
 	
@@ -14,7 +24,7 @@ class Variavel{
 		return this.nome;
 	}
 	
-	public String getValor(){
+	public double getValor(){
 		return this.valor;
 	}
 
