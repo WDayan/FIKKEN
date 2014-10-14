@@ -17,4 +17,7 @@ class Imprime{
 		return this.impresao;
 	}
 
+	public void imprime(String comando){
+		
+	}
 }
