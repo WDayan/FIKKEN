@@ -19,5 +19,7 @@ class Imprime{
 
 	public void imprime(String comando){
 		
+		String[] aux = comando.split('^')
+		system.out.println(comando);
 	}
 }

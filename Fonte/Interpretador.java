@@ -8,8 +8,15 @@
 import java.util.Scanner;
 
 public class Interpretador{
+	private Variavel var;
+	private Laco pilha;	
+		
 
+	public Interpretador(){
+			[500]var= new Variavel();
+			pilha=new Laco();
 
+	}
 
 
 
@@ -24,7 +31,7 @@ public class Interpretador{
 				com[i]=com[i].replace("fimse",".");
 				com[i]=com[i].replace("var","^");
 				com[i]=com[i].replace("while","@");
-				com[i]=com[i].replace("imprime","-");
+				com[i]=com[i].replace("imprime","¢");
 				com[i]=com[i].replace("break","!");
 		
 		}
@@ -39,6 +46,9 @@ public class Interpretador{
 			switch(operador){
 
 				case '-' : this.imprime(comando);
+							break;
+				case '^': this. tokens(comando);
+							break;
 
 	}
 
