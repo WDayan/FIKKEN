@@ -28,4 +28,5 @@ class Variavel{
 		return this.valor;
 	}
 
+	
 }

@@ -37,7 +37,12 @@ public class Interpretador{
 		}
 
 		for(i=0; i<com.length && com[i] != null; i++){
+<<<<<<< .mine
+							
+			
+=======
 					
+>>>>>>> .r15
 			operador=com[i].charAt(0);
 			comando=com[i].substring(1);
 			comando=comando.trim();
@@ -48,24 +53,27 @@ public class Interpretador{
 							break;
 				case '^': this. tokens(comando);
 							break;
-
+				case'*': 
+							break;
 	}
 
 
 <<<<<<< .mine
 	}
 
-	public void tokens(string c){
-		String file[] = a.split(" ");
+	public void tokenAtualiza(string c){
+		String file[] = c.split("=");
+		
 		int i;
 
 		for(i = 0; i < file.length; i++){
-			if (File [i] == '$var' && File[i+1] == '='  ) {
+			if (File [i].variavelVerdade(file[i]) == True) {
 				   
 			}
 		}
 
 	}
-
+	//public BooleaN variavelVerdade(var a);
+ 
 
 }
