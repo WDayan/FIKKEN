@@ -37,8 +37,7 @@ public class Interpretador{
 		}
 
 		for(i=0; i<com.length && com[i] != null; i++){
-							
-			//Retira o token e salva na instrucao
+					
 			operador=com[i].charAt(0);
 			comando=com[i].substring(1);
 			comando=comando.trim();
