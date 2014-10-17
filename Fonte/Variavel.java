@@ -28,5 +28,14 @@ class Variavel{
 		return this.valor;
 	}
 
-	
+	public Boolean verificaVar(String a, Variavel var[] ){
+		int i;
+		for (i=0;i<var.lenght;i++ ) {
+			return if((var[i].setnome()).equals(a));			
+		}
+
+
+
+
+	}
 }

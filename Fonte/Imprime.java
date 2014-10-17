@@ -19,8 +19,8 @@ class Imprime{
     */
 	public void imprime(String comando,Variavel var){
 		int i;
-		String[] aux = comando.split('^')
-		for(int i =0; i<aux.lenght;i++){
+		String[] aux = comando.split(' ')
+		for(int i=0; i<aux.lenght && aux[i]==NULL;i++){
 			if(aux[i].charAt(0)=="*"){
 				aux[i]=aux[i].split("*");
 				system.out.println(aux[i]);

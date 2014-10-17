@@ -44,7 +44,7 @@ public class Interpretador{
 
 			switch(operador){
 
-				case '¢' : impressão.imprime(comando,var[]);
+				case '¢' :impressão.imprime(comando,var[]);
 							break;
 				case '^': this. atualizaVar(comando,var[]);
 							break;
@@ -73,7 +73,7 @@ public class Interpretador{
  public int atualizavar(string c,var[]){
  	String file[]= new String[2];
 
- 	Double vet;
+ 	string vet;
  	if(c.split("=")){
  		if(c.split("'+'\'-'\'*'\'/'"){
  			vet=mat(c.substring(2),var[]);
@@ -111,7 +111,7 @@ public Double mat(string c,Variavel var[]){
 	Double res;
 	int i;
 		for(i=0;i<file.lenght & file[i]!=NULL;i++){
-			if(verificaVar(file[i])){
+			if(var[i].verificaVar(file[i])){
 				cont[i]= var[i].getValor();
 			}
 			else{
@@ -119,7 +119,7 @@ public Double mat(string c,Variavel var[]){
 			}
 		}
 
-		if(cont.lenght==1){ //Ver como é contado de 0 ou 1
+		if(cont.lenght==0){ //Ver como é contado de 0 ou 1
 	
 			return cont[0];
 
