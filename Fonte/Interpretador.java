@@ -63,7 +63,7 @@ public class Interpretador{
 
 	public void tokenAtualiza(string c){
 		String file[] = c.split("=");
-		
+		Double vet[] ;
 		int i;
 
 		for(i = 0; i < file.length; i++){
@@ -73,7 +73,76 @@ public class Interpretador{
 		}
 
 	}
-	//public BooleaN variavelVerdade(var a);
+	/* REVISAR TESTE DE MESA E EM QUE CLASSE IMPLEMENTAR 
  
+ public int atualizavar(string c,var[]){
+ 	String file[]= new String[2];
+
+ 	Double vet;
+ 	if(c.split("=")
+ 		if(c.split("'+'\'-'\'*'\'/'"){
+ 			vet=mat(c.substring(2),var[]);
+ 			file[0]=c.charAt(0);
+ 			return newvar(file[0],vet,var[]);
+		}else{
+			String file[]=c.split("=");
+				return newVar(file[i],file[i+1],var[]);
+		}
+
+ }
+
+ public int newvar(String a, String b, Variavel var[]){
+
+ 	for(i=0;i<var.lenght;i++){
+ 		if((var[i].setnome()).equals(a)){
+			var[i].setnome=a;
+			var[i]. setvalor=Double.parseDouble(b);
+ 			return 1;
+ 		}
+ 		if(var[i].setnome==NULL){
+
+ 			var[i].setnome=a;
+ 			var[i]. setvalor=Double.parseDouble(b); 
+ 			return 1;
+ 		}
+ 	}
+
+}
+
+}
+public Double mat(string c,Variavel var[]){
+	String[] file = c.split("\\+\\-\\*\\'/'");
+	double[] cont = new Double(file.lenght);
+
+		for(i=0;file.lenght;i++){
+			if(verificaVar(file[i])){
+				cont[i]= var[i].getValor();
+			}
+			else{
+				cont[i]=Double.parseDouble(file[i]);
+			}
+		}
+		int j = 1;
+		for(i=0;i<c.lenght;i++){
+			if(c.charAt(i) == '+' || c.charAt(i) == '-' || expressao.charAt(i) == '*' || expressao.charAt(i)== '/'){
+				switch(c.charAt(i))
+					case'+' : 
+						res=res+cont[j];
+						break;
+					case'-' : 
+						res=res-cont[j];
+						break;
+					case'*' : 
+						res=res*cont[j];
+						break;
+					case'/' : 
+						res=res/cont[j];
+						break;		
+			}
+			j++
+		}
+	return res;
+}
+*/
 
 }
