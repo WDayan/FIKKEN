@@ -31,8 +31,8 @@ class Variavel{
 	public Boolean verificaVar(String a, Variavel var[] ){
 		int i;
 		Boolean valor = false;
-		for (i=0;i<var.lenght;i++ ) {
-			 if((var[i].setnome()).equals(a)); valor=True;			
+		for (i = 0 ; i < var.length ; i++ ) {
+			 if((var[i].nome).equals(a)); valor = true;			
 		}
 
 			return valor;

@@ -17,16 +17,18 @@ class Imprime{
 		return this.impresao;
 	}
     */
-	public void imprime(String comando,Variavel var){
+	public void imprime(String comando,Variavel var[]){
 		int i;
-		String[] aux = comando.split(' ')
-		for(int i=0; i<aux.lenght && aux[i]==NULL;i++){
-			if(aux[i].charAt(0)=="*"){
-				aux[i]=aux[i].split("*");
-				system.out.println(aux[i]);
+		String aux[] = comando.split(" ");
+		String aux2[];
+		Interpretador ii = new Interpretador();
+		for(i = 0; i< (aux.length) && aux[i]==null;i++){
+			if(aux[i].charAt(0) == '*'){
+				aux2 = aux[i].split("*");
+				System.out.println(aux2);
 			}
 			else{
-				system.out.println( this.mat(comando,var[]));
+				System.out.println( ii.mat(comando,var));
 
 			}
 
