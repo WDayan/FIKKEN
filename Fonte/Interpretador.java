@@ -30,7 +30,9 @@ public class Interpretador{
 				com[i]=com[i].replace("se","*");
 				com[i]=com[i].replace("fimse",".");
 				com[i]=com[i].replace("var$","^");
-				com[i]=com[i].replace("while","@");
+				com[i]=com[i].replace("enquanto","@");
+				com[i]=com[i].replace("fimenquanto","ª");
+
 				com[i]=com[i].replace("imprime","¢");
 				com[i]=com[i].replace("break","!");
 		
@@ -51,6 +53,8 @@ public class Interpretador{
 					//this.atualizaVar(s , var);
 					break; 
 				case '*': 
+						if(this.funcaoSe(instrucao,var[])== false)
+
 					break;
 				default:
 					break;
@@ -80,7 +84,7 @@ public class Interpretador{
 
 	 	String vet;
 	 	if(c.split("=")){
-	 		if(c.split("'+'\\'-'\\'*'\\'/'")){
+	 		if(c.split("\\+|\\-|\\*|\\/")){
 	 			vet=mat(c.substring(2),var);
 	 			file[0]=c.charAt(0);
 	 			return newvar(file[0],Double.parseDouble(vet),var);
@@ -110,7 +114,7 @@ public class Interpretador{
 	}
 	
 	public double mat(String c, Variavel var[]){
-		String file[] = c.split("\\'+'\\'-'\\'*'\\'/'");
+		String file[] = c.split("\\+|\\-|\\*|\\/");
 		double cont[] = new double[file.length];
 		double res;
 		int i;
@@ -161,6 +165,33 @@ public class Interpretador{
 
 		return res;
 	}	
+	public boolean funcaoSe(Variavel var[],Strind a){
+		int i;
+		String[] teste = a. split(">|<|_");
+		double cont[] = new double[file.length];
+		int i;
+		for(i=0 ; i < file.length && file[i] != null ; i++){
+			if(var[i].verificaVar(file[i], var)){
+				cont[i]= var[i].getValor();
+			}
+			else{
+				cont[i]=mat(teste[i], var[]);
+			}
+		}
+		for(i=0,i<c.lenght;i++){
+			if(c.charAt(i)=='>' || c.charAt(i)=='<' || c.charAt(i) == '&' || c.charAt(i) == '!'){
+				switch(c.charAt(i)){
+					case '>': 
+					 	return cont[0]>cont[1];
+					case '<': 
+					 	return cont[0]<cont[1]);
+					case '_': 
+						return cont[0]==cont[1];
+				}		
+			}	
+		}
+		return false;
+	}
 
 
 
