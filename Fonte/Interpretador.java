@@ -27,14 +27,13 @@ public class Interpretador{
 			String comando;
 			for(i=0; i<com.length && com[i] != null; i++){
 				com[i]=com[i].trim();
-				com[i]=com[i].replace("se","*");
+				com[i]=com[i].replace("se","£");
 				com[i]=com[i].replace("fimse",".");
 				com[i]=com[i].replace("var$","^");
 				com[i]=com[i].replace("enquanto","@");
 				com[i]=com[i].replace("fimenquanto","ª");
-
 				com[i]=com[i].replace("imprime","¢");
-				com[i]=com[i].replace("break","!");
+				
 		
 		}
 
@@ -52,10 +51,26 @@ public class Interpretador{
 				case '^':
 					//this.atualizaVar(s , var);
 					break; 
-				case '*': 
-						if(this.funcaoSe(instrucao,var[])== false)
-
+				case '£': 
+						if(this.funcaoSe(operador,var[])== false)
+							i=pilha.linha(com[]i);
 					break;
+				case '.':
+						break;
+				case '@' : 
+					if(funcaoSe(comando,var[]) {
+						pilha.push(i);
+					}
+					else{
+						i=pilha.linha(com[],i);
+
+					}
+				case'ª':{
+						if(pilha.vazio())
+							i=pilha.pop();
+
+				}
+
 				default:
 					break;
 			}
