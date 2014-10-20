@@ -29,24 +29,24 @@ class Laco{
 
 	public int linha( String  com[], int i){
 		int x;
-		String aux = com[i].charAt(0);
+		String aux = ""+com[i].charAt(0);
 		String aux2;
-		if(aux == '£'){
-			aux2 = '.';
+		if(aux == ""+'£'){
+			aux2 = ""+'.';
 		}
-		else if (aux == '@') {
-			aux2 = 'ª';
+		else if (aux == ""+'@') {
+			aux2 = ""+'ª';
 		}
 
-		for (i+=1;i<com.lenght && com[i] =!null; i++  ) {
-			if(aux = com[i].charAt(0)){
+		for (i += 1 ; ((i < com.length) && (com[i] != null)) ; i++  ) {
+			if(aux == ""+com[i].charAt(0)){
 				x++;
-			}
-			else if(com[i].charAt(0)== aux2){
-				if(cont==0)
+			}else if(""+com[i].charAt(0) == aux2){
+				if(x == 0){
 						return i;
-				else
+				}else{
 					x--;
+				}
 			}
 		}
 		return i ;	
