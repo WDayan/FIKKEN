@@ -28,7 +28,7 @@ class Laco{
 	public int linha( String  com[], int i){
 		int x = 0;
 		String aux = ""+com[i].charAt(0);
-		String aux2 =  new String();
+		String aux2 =  new String;
 		if(aux == ""+'£'){
 			aux2 = ""+'.';
 		}

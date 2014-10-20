@@ -1,0 +1,10 @@
+class Fluxo{
+	private String f[];
+	private int topo;	
+
+	public Fluxo(){
+		f = new String[1000];
+
+	}
+
+}
