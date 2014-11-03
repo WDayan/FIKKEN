@@ -1,22 +1,30 @@
 /*
+*	Trabalho de programacoa 1
+*
 *	Feito por: 
 *	Jeferson A. Schein
 *	e-mail : schein.jefer@gmail.com
 *	Ivair Puerari
 *	e-mail : ivaair@hotmail.com
+*	
+*	classe que substitui palavras chaves por tokens e interpreta os mesmo, fazendo
+*	chamada a metodos e classe e metodos do arquivo.
 *
-*	classe interpretador, usada para substituir coandos por tokens, e fazer a interpretacao
-*	dos mesmos, declara a classe VarU que sao as variaveis usadas, e chema metodos 
-*	estaticos para interpretar as linahs de comandoo conforme token testado
 *
 */
 
+
 import java.util.Scanner;
+
 class Interpretador{
 	private VarU var;
+	private Laco laco;
+	private Scaner scan;
 
 	public Interpretador(){
 			var = new VarU();
+			laco = new Laco();
+			scan = new Scaner(System.in);
 	}
 
 	public void interpreta(String com[]){
@@ -42,30 +50,41 @@ class Interpretador{
 			aux = aux.trim();
 						
 			switch(tok){
-				case '.':
-
+				case '.':	//if
+					if(Logico.funcaoSe(var, aux) == false){
+						Logico.linha(com, i)
+					}
 					break;
 					
-				case ',':
-
+				case '.': 	//fim if
 					break;
 					
-				case '$':
+				case '$':	//operacoes				
 					Mate.soma(aux, var);
 					break;
 					
-				case '@':
+				case '@':	//while
+					if(Logico.funcaoSe(var, aux) == true){
+						Logico.linha(com, i)
+					}else{
+						laco.push(i);
+					}
 					break;
 					
-				case '#':
+				case '#':	//fim while
+					if(laco.vazio() != true){
+						i = laco.pop;
+					}
 					break;
 					
-				case '!':
+				case '!':	//imprime
 					Imp.imprime(aux);
 					break;
 
 					
-				case '?':
+				case '?':	//scaner leitur
+					double get = scan..nextDouble();
+					VarU.atlVar(aux, get);
 					break;
 				
 			}
@@ -76,7 +95,4 @@ class Interpretador{
 
 
 
-
 }
-
-		

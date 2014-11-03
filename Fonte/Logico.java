@@ -1,5 +1,20 @@
+/*
+*	Trabalho de programacoa 1
+*
+*	Feito por: 
+*	Jeferson A. Schein
+*	e-mail : schein.jefer@gmail.com
+*	Ivair Puerari
+*	e-mail : ivaair@hotmail.com
+*
+*
+*	Classe usada pelo if e while para fazer os testes logicos, e desvio caso testes
+*	nao sejam verdadeiros.
+*
+*
+*/
 class Logico{
-	public static boolean funcaoSe(VarU var[],String a){
+	public static boolean funcaoSe(VarU var ,String a){
 		int i;
 		String[] teste = a. split("\\>|\\<|\\!|\\&");
 		double cont[] = new double[teste.length];
@@ -29,5 +44,27 @@ class Logico{
 		return false;
 	}
 
-	
+	public static int linha( String  com[], int i){
+		int x = 0;
+		char aux = com[i].charAt(0);
+		char aux2 ;
+		if(aux == '@'){
+			aux2 = '#';
+		}else if (aux == '\\.') {
+			aux2 = '\\,';
+		}
+
+		for (i += 1 ; ((i < com.length) && (com[i] != null)) ; i++  ) {
+			if(aux == com[i].charAt(0)){
+				x++;
+			}else if( aux2 == com[i].charAt(0)){
+				if(x == 0){
+					return i;
+				}else{
+					x--;
+				}
+			}
+		}
+		return i ;	
+	}
 }

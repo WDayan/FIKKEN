@@ -1,3 +1,18 @@
+/*
+*	Trabalho de programacoa 1
+*
+*	Feito por: 
+*	Jeferson A. Schein
+*	e-mail : schein.jefer@gmail.com
+*	Ivair Puerari
+*	e-mail : ivaair@hotmail.com
+*	
+*	classe que sere para gravar a linha onde comeca o while, para pode retornar
+*	para o comeco do while e fazer o teste novamente
+*
+*
+*/
+
 class Laco{
 	private int p[];
 	private int t;	
@@ -22,33 +37,10 @@ class Laco{
 	}
 	
 	public boolean vazio(){
-		return (this.t==-1)? false:true;
+		return (this.t == -1) ? false:true;
 	}
 
-	public int linha( String  com[], int i){
-		int x = 0;
-		String aux = ""+com[i].charAt(0);
-		String aux2 =  new String();
-		if(aux == ""+'£'){
-			aux2 = ""+'.';
-		}
-		else if (aux == ""+'@') {
-			aux2 = ""+'ª';
-		}
 
-		for (i += 1 ; ((i < com.length) && (com[i] != null)) ; i++  ) {
-			if(aux == ""+com[i].charAt(0)){
-				x++;
-			}else if( aux2 == ""+com[i].charAt(0)){
-				if(x == 0){
-						return i;
-				}else{
-					x--;
-				}
-			}
-		}
-		return i ;	
-		}
 
 
 
