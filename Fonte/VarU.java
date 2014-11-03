@@ -3,7 +3,7 @@
 *	Jeferson A. Schein
 *	e-mail : schein.jefer@gmail.com
 *	Ivair Puerari
-*	e-mail : ivaair@hotmail.com
+*	
 * 
 * 	Classe VarU é usada para as variaveis usadas ela possui um vetor de variavei d 500
 * 	posicoes, ser para incerir uma nova variavel como fazer alteracoes em seus valores,
