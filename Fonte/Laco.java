@@ -39,61 +39,6 @@ class Laco{
 	public boolean vazio(){
 		return (this.t == -1) ? false : true;
 	}
-
-	public int loop(String []com, int i, VarU v){
-		int j, auxI = i, x;
-		double a = 0, b = 0;
-		boolean boo = false;
-		String aux1 = com[i].substring(1);
-		String []aux = aux1.split("\\<|\\>");
-		aux1 = aux1.trim();
-		
-		this.push(i);
-				
-		for(i = i + 1; i < com.length; i++){
-			for(j = 0; i < aux[i].length(); i++){
-				if(com[i].charAt(j) == '>' || com[i].charAt(j) == '<' ){
-					if(aux[j] != null){
-						aux[j] = aux[j].trim();
-					}
-					if(v.varE(aux[0])){
-						a = v.valorVar(aux[0]);
-					}else {
-						a = Double.parseDouble(aux[j]);
-					}
-					if(v.varE(aux[1])){
-						b = v.valorVar(aux[0]);
-					}else {
-						b = Double.parseDouble(aux[j]);
-					}
-				}
-				if(com[i].charAt(j) == '>' && a > b){
-					boo = true;
-				}
-				if(com[i].charAt(j) == '<' && a < b){
-					boo = true;
-				}
-			}
-	
-			if(com[i].charAt(0) == '#'){
-				auxI = i;
-				i = com.length;
-			}
-		}
-		
-		if( boo == true){
-			auxI = this.pop();
-			
-		}else {
-			return auxI;
-		}
-		
-		return auxI;
-		
-	}
-			
-	
-
-		
+					
 	
 }
