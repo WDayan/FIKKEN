@@ -40,6 +40,7 @@ class Interpretador{
 			com[i]=com[i].replace("fimse","*");
 			com[i]=com[i].replace("se",".");
 			com[i]=com[i].replace("op","$");
+			com[i]=com[i].replace("se",".");
 			com[i]=com[i].replace("enquanto","@");
 			com[i]=com[i].replace("imprime","%");
 			com[i]=com[i].replace("le","?");
@@ -52,7 +53,7 @@ class Interpretador{
 						
 			
 			switch(tok){
-				case '.':	//if
+				case '.':	
 					boolean b = Logico.funcaoSe(var, aux);
 					if(b == false){
 						i = Logico.linha(com, i);

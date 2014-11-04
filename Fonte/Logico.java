@@ -28,7 +28,11 @@
 				cont[i]=Double.parseDouble(teste[i]);
 			}
 		}
+<<<<<<< HEAD
 		
+=======
+	
+>>>>>>> e6deed6c82032b1e118c950688b54a251b7d688e
 		for(i = 0 ; i < a.length() ; ++i){
 			if(a.charAt(i) == '>' || a.charAt(i) == '<' || a.charAt(i) == '&' || a.charAt(i) == '!'){
 					if(a.charAt(i) == '>'){
