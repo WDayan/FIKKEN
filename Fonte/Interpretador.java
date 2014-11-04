@@ -36,12 +36,11 @@ class Interpretador{
 		for(i = 0 ; i < com.length && com[i] != null; i++){
 			com[i]=com[i].trim();
 			com[i]=com[i].trim();
-			com[i]=com[i].replace("se",".");
+			com[i]=com[i].replace("fimenquanto","#");
 			com[i]=com[i].replace("fimse","*");
 			com[i]=com[i].replace("op","$");
-			//com[i]=com[i].replace("op","$");
+			com[i]=com[i].replace("se",".");
 			com[i]=com[i].replace("enquanto","@");
-			com[i]=com[i].replace("fimenquanto","#");
 			com[i]=com[i].replace("imprime","%");
 			com[i]=com[i].replace("le","?");
 		}
@@ -53,7 +52,7 @@ class Interpretador{
 						
 			
 			switch(tok){
-				case '.':	//if
+				case '.':	
 					boolean b = Logico.funcaoSe(var, aux);
 					System.out.println(b);
 					if(b == false){
