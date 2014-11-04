@@ -1,7 +1,4 @@
 op a = 10 + 10
-op b = 5 + 2 + 3 
-se a & b
-	imprime = aaa
-fimse
-imprime = abb
-imprime = abb12
+op b = 5 + 2 + 10001 + 3  * 2 / 10 / 20
+imprime = a
+imprime = b

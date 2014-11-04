@@ -28,7 +28,7 @@ class Interpretador{
 			scan = new Scanner(System.in);
 	}
 
-	public void interpreta(String com[]){
+	public boolean interpreta(String com[]){
 		int i, contv = 0, j;
 		char tok;
 		String aux;
@@ -36,17 +36,16 @@ class Interpretador{
 		for(i = 0 ; i < com.length && com[i] != null; i++){
 			com[i]=com[i].trim();
 			com[i]=com[i].trim();
-			com[i]=com[i].replace("se",".");
-			com[i]=com[i].replace("fimse","*");
-			com[i]=com[i].replace("op","$");
-			//com[i]=com[i].replace("op","$");
-			com[i]=com[i].replace("enquanto","@");
 			com[i]=com[i].replace("fimenquanto","#");
+			com[i]=com[i].replace("fimse","*");
+			com[i]=com[i].replace("se",".");
+			com[i]=com[i].replace("op","$");
+			com[i]=com[i].replace("enquanto","@");
 			com[i]=com[i].replace("imprime","%");
 			com[i]=com[i].replace("le","?");
 		}
 
-		for(i = 0; i < (com.length - 1); ++i){
+		for(i = 0; i < (com.length - 1) && com[i] != null; ++i){
 			tok = com[i].charAt(0);
 			aux = com[i].substring(1);
 			aux = aux.trim();
@@ -55,9 +54,8 @@ class Interpretador{
 			switch(tok){
 				case '.':	//if
 					boolean b = Logico.funcaoSe(var, aux);
-					System.out.println(b);
 					if(b == false){
-						i = Logico.linha(com, i, tok);
+						i = Logico.linha(com, i);
 					}
 					break;
 					
@@ -74,20 +72,19 @@ class Interpretador{
 					break;
 					
 				case '@':	//while
-					i = laco.loop(com, i, var);
-					//if(Logico.funcaoSe(var, aux) == true){
-					//	System.out.println("whi1");
-					//	laco.push(i);
-					//}else{
-					//	System.out.println("whi2");
-					//'	Logico.linha(com, i, tok);
-					//}
+					if(Logico.funcaoSe(var, aux) == true){
+						laco.push(i);
+					}else{
+						i = Logico.linha(com, i);
+					}
 					break;
 					
 				case '#':	//fim while
-					//if(laco.vazio() != true){
-					//	i = laco.pop();
-					//}
+					if(laco.vazio() == true){
+						//if(com[laco.pop()].charAt(0) == '@'){
+							i = (laco.pop() - 1);
+						//}
+					}
 					break;
 					
 				case '%':	//imprime
@@ -107,7 +104,7 @@ class Interpretador{
 			}
 			
 		}
-
+		return true;
 	}
 
 

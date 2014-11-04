@@ -9,6 +9,7 @@ class Mate{
 			int j;
 			double res;
 			for (i=0;i<file.length ; i++ ){
+				file[i] = file[i].trim();
 				if(a.varE(file[i])){
 					ve[i] = a.valorVar(file[i]);
 				}

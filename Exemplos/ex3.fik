@@ -1,6 +1,6 @@
 op a = 1
 op b = 6
 se a > b
- 	imprime = asjkhdkjhg
+ 	op a = a + b
 fimse
-imprime = erradp
+imprime = a

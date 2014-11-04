@@ -23,7 +23,7 @@ class Laco{
 	}
 
 	public void push(int s){
-		this.t += 1;
+		this.t++;
 		this.p[this.t] = s;
 	}
 
@@ -32,13 +32,14 @@ class Laco{
 			this.t--;
 			return (p[this.t + 1]);
 		}else{
-			return (-1);
+			return 0;
 		}
 	}
 	
 	public boolean vazio(){
-		return (this.t == -1) ? false : true;
+		return (this.t == -1) ? false:true;
 	}
-					
+
+
 	
 }

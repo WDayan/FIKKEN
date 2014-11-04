@@ -1,7 +1,11 @@
 op a = 10
 op c = 1
-enquanto c < a
-	imprime = c
-	c = c + 1
+se c > a
+	se c > a
+		imprime = c mudou
+	fimse
+	imprime = passo
+	se c ! a
+		imprime = c diferente de a
+	fimse
 fimenquanto
-imprime = asd

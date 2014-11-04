@@ -1,0 +1,17 @@
+op a = 5
+enquanto a < 10
+	op b = a
+	imprime = loop 1
+	enquanto b < 10
+		se b ! a
+			imprime =  loOp 2
+			op b = b + 1
+			se b > 1
+				imprime = b
+			fimse
+		fimse
+	fimenquanto
+	op a = a + 1
+	imprime = quaSe pronto~
+fimenquanto
+imprime = fim

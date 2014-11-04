@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.Scanner;	
 
-public class Fikken{
+class Fikken{
 
 	public static void main(String[] args) {
 		
@@ -20,11 +20,12 @@ public class Fikken{
 				comandos[i] = conteudo.nextLine();
 				i++;
 			}
+			
 			f.interpreta(comandos);
 		
 		}catch(Exception e){
-				//System.out.println("Nao e possivel ler o arquivo: " + (args.length > 0 ? args[0] : "(desconhecido)"));
-				//System.out.println("Uso:\n Java Centrum /caminho/para/arquivo.cem");
+				System.out.println("Nao e possivel ler o arquivo: " + (args.length > 0 ? args[0] : "(desconhecido)"));
+				System.out.println("Uso:\n java -jar Fikken.jar  /caminho/para/arquivo.fik");
 				return;
 				
 		}
