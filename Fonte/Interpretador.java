@@ -19,12 +19,13 @@ import java.util.Scanner;
 class Interpretador{
 	private VarU var;
 	private Laco laco;
-	private Scaner scan;
+	private Scanner scan;
+
 
 	public Interpretador(){
 			var = new VarU();
 			laco = new Laco();
-			scan = new Scaner(System.in);
+			scan = new Scanner(System.in);
 	}
 
 	public void interpreta(String com[]){
@@ -32,59 +33,75 @@ class Interpretador{
 		char tok;
 		String aux;
 		
-
-		for(i=0; i<com.length && com[i] != null; i++){
+		for(i = 0 ; i < com.length && com[i] != null; i++){
+			com[i]=com[i].trim();
 			com[i]=com[i].trim();
 			com[i]=com[i].replace("se",".");
-			com[i]=com[i].replace("fimse",",");
+			com[i]=com[i].replace("fimse","*");
 			com[i]=com[i].replace("op","$");
+			//com[i]=com[i].replace("op","$");
 			com[i]=com[i].replace("enquanto","@");
 			com[i]=com[i].replace("fimenquanto","#");
-			com[i]=com[i].replace("imprime","!");
+			com[i]=com[i].replace("imprime","%");
 			com[i]=com[i].replace("le","?");
 		}
 
-		for(i = 0; i < com.length; i++){
+		for(i = 0; i < (com.length - 1); ++i){
 			tok = com[i].charAt(0);
 			aux = com[i].substring(1);
 			aux = aux.trim();
 						
+			
 			switch(tok){
 				case '.':	//if
-					if(Logico.funcaoSe(var, aux) == false){
-						Logico.linha(com, i)
+					boolean b = Logico.funcaoSe(var, aux);
+					System.out.println(b);
+					if(b == false){
+						i = Logico.linha(com, i, tok);
 					}
 					break;
 					
-				case '.': 	//fim if
+				case '*': 	//fim if
 					break;
 					
-				case '$':	//operacoes				
-					Mate.soma(aux, var);
+				case '$': 	//criar variavel
+					String[] nova = aux.split("=");
+					nova[1] = nova[1].trim();
+					double valor = Mate.soma(nova[1], var);
+					nova[0] = nova[0].trim();
+					var.atlVar( nova[0] , valor);
+					
 					break;
 					
 				case '@':	//while
-					if(Logico.funcaoSe(var, aux) == true){
-						Logico.linha(com, i)
-					}else{
-						laco.push(i);
-					}
+					i = laco.loop(com, i, var);
+					//if(Logico.funcaoSe(var, aux) == true){
+					//	System.out.println("whi1");
+					//	laco.push(i);
+					//}else{
+					//	System.out.println("whi2");
+					//'	Logico.linha(com, i, tok);
+					//}
 					break;
 					
 				case '#':	//fim while
-					if(laco.vazio() != true){
-						i = laco.pop;
-					}
+					//if(laco.vazio() != true){
+					//	i = laco.pop();
+					//}
 					break;
 					
-				case '!':	//imprime
-					Imp.imprime(aux);
+				case '%':	//imprime
+					aux = aux.trim();
+					Imp.imprime(aux, var);
 					break;
 
 					
 				case '?':	//scaner leitur
-					double get = scan..nextDouble();
-					VarU.atlVar(aux, get);
+					double get = scan.nextDouble();
+					var.atlVar(aux, get);
+					break;
+					
+				default:
 					break;
 				
 			}

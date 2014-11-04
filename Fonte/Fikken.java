@@ -23,8 +23,8 @@ public class Fikken{
 			f.interpreta(comandos);
 		
 		}catch(Exception e){
-				System.out.println("Nao e possivel ler o arquivo: " + (args.length > 0 ? args[0] : "(desconhecido)"));
-				System.out.println("Uso:\n Java Centrum /caminho/para/arquivo.cem");
+				//System.out.println("Nao e possivel ler o arquivo: " + (args.length > 0 ? args[0] : "(desconhecido)"));
+				//System.out.println("Uso:\n Java Centrum /caminho/para/arquivo.cem");
 				return;
 				
 		}

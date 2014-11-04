@@ -1,0 +1,7 @@
+op a = 10
+op c = 1
+enquanto c < a
+	imprime = c
+	c = c + 1
+fimenquanto
+imprime = asd

@@ -1,15 +1,16 @@
 class Mate{
 	public static double soma(String c, VarU a){
+			
 			String file[] =  c.split("\\+|\\-|\\/|\\*");
 	
 			double ve[] = new double[file.length];
-
+			
 			int i;
 			int j;
 			double res;
-			for (i=0;i<file.length ; i++ ) {
-				if(a.VarE(file[i])){
-					ve[i]=a.valorVar(file[i]);
+			for (i=0;i<file.length ; i++ ){
+				if(a.varE(file[i])){
+					ve[i] = a.valorVar(file[i]);
 				}
 				else{
 					ve[i] = Double.parseDouble(file[i]);
@@ -23,7 +24,7 @@ class Mate{
 			for (i=0;i<c.length() ;i++ ) {
 				if(c.charAt(i) == '+' || c.charAt(i) == '-' || c.charAt(i) == '*' || c.charAt(i)== '/'){
 					switch(c.charAt(i)){
-						case '+' : 
+						case '+' :
 							res  = res + ve[j];
 							break;
 						case '*' : 

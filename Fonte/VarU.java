@@ -25,13 +25,12 @@ class VarU{
 	
 	public boolean varE(String s){
 		int i;
-		
+		s = s.trim();
 		for(i = 0; i < this.ult; i++){
 			if((vetor[i].getNome()).equals(s)){
 				return true;
 			}
 		}
-		
 		return false;	
 	}
 	
@@ -50,15 +49,14 @@ class VarU{
 	public int atlVar(String s, double d){
 		int i;
 		
+		
 		for(i = 0; i < this.ult; i++){
-			if(vetor[i] != null && (vetor[i].getNome()).equals(s)){
-				vetor[i].setValor(d);
+			if(this.vetor[i] != null && (this.vetor[i].getNome()).equals(s)){
+				this.vetor[i].setValor(d);
 				return 1;
 			}
 		}
-		
-		this.vetor[i].setNome(s);
-		this.vetor[i].setValor(d);
+		this.vetor[ult] = new Variavel(s, d);
 		this.ult++;
 		return 0;
 		

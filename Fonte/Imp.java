@@ -14,12 +14,12 @@
 
 
 class Imp{
-	public static void imprime(String c, VarU v){
-		String ca = c.trim();		
-		String imp = ca.substring(1);
+	public static void imprime(String c, VarU v){		
+		String imp = c.substring(1);
+		imp = imp.trim();
 		int p;
 
-		if(v.varE(imp[1]))){	
+		if(v.varE(imp)){	
 			System.out.println(v.valorVar(imp));
 			
 		}else{
