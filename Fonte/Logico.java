@@ -78,12 +78,24 @@
 		}
 		return false;
 	}
-
-	public static boolean seElse(boolean b){ //Só existe pra dizer se deve entrar no ELSE ou não!
-		if(b)
-			return true;
-		return false;
+	public static int achaFuncao(String com [], int i, String name){
+		char aux = '+';
+		String s = new String ();
+		for (i += 1 ; ((i < com.length) && (com[i] != null)) ; i++  ) {
+			if(aux == com[i].charAt(0)){
+				s = com[i].substring(1);
+				//System.out.println("s        "+s);
+				s = s.trim();
+				//String [] auxName = s.split("{");
+				//System.out.println("s = "+s+"  nome = "+name);
+				if(name.equals(s)){
+					return i;
+				}
+			}
+		}
+		return 0;
 	}
+	
 	public static int linha( String  com[], int i){
 		int x = 0;
 		char aux = com[i].charAt(0);
