@@ -18,12 +18,12 @@ class VarU{
 	Variavel []vetor;
 	private int ult;
 	
-	public VarU(){
+	public VarU(){ //Construtor.
 		vetor = new Variavel[500];
 		ult = 0;
 	}
 	
-	public boolean varE(String s){
+	public boolean varE(String s){//Retorna True se String s é uma variavel que existe!!
 		int i;
 		s = s.trim();
 		for(i = 0; i < this.ult; i++){
@@ -34,7 +34,7 @@ class VarU{
 		return false;	
 	}
 	
-	public double valorVar(String s){
+	public double valorVar(String s){ //Retorna o valor da variavel.
 		int i;
 		
 		for(i = 0; i < this.ult; i++){
@@ -46,7 +46,7 @@ class VarU{
 		return 0;
 	}
 	
-	public int atlVar(String s, double d){
+	public int atlVar(String s, double d){//Seta VALOR e NOME da nova Variavel.
 		int i;
 		
 		

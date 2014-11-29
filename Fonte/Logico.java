@@ -13,44 +13,65 @@
 *
 *
 */class Logico{
-	public static boolean funcaoSe(VarU var ,String a){
+	
+	public static boolean funcaoSe(VarU var ,String a, int value){//Se value=2 eh IF. Se value=1 eh WHILE
 		int i;
-		boolean boo = false;
+		boolean boo = false, b;
 		String[] teste = a.split("\\>|\\<|\\!|\\&");
 		double cont[] = new double[teste.length];
 
 		for(i = 0 ; (i < teste.length) && (teste[i] != null) ; ++i){
 			teste[i] = teste[i].trim();
-			if(var.varE(teste[i])){
-				cont[i]= var.valorVar(teste[i]);
+			if(var.varE(teste[i])){// volta TRUE caso variavel existe.
+				cont[i]= var.valorVar(teste[i]); //Coloca no vetor Cont o Valor da Variavel
 			}
 			else{
-				cont[i]=Double.parseDouble(teste[i]);
+				cont[i]=Double.parseDouble(teste[i]); //Não encontrou a variavel, entao é um n°
 			}
 		}
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		
-=======
+//=======
 	
->>>>>>> e6deed6c82032b1e118c950688b54a251b7d688e
+//>>>>>>> e6deed6c82032b1e118c950688b54a251b7d688e
 		for(i = 0 ; i < a.length() ; ++i){
 			if(a.charAt(i) == '>' || a.charAt(i) == '<' || a.charAt(i) == '&' || a.charAt(i) == '!'){
 					if(a.charAt(i) == '>'){
 					 	if(cont[0] > cont[1]){
+							if(value == 2)
+								b = true;
 					 		return true;
 					 	}
+						else
+							if(value == 2)
+								b = false;
 					}else if(a.charAt(i) == '<'){
 					 	if(cont[0] < cont[1]){
+							if(value == 2)
+								b = true;
 					 		return true;
 					 	}
-					}else if(a.charAt(i) == '&'){
+						else
+							if(value == 2)
+								b = false;
+					}else if(a.charAt(i) == '&'){//Operador IGUAL ==
 					 	if(cont[0] == cont[1]){
+							if(value == 2)
+								b = true;
 					 		return true;
 					 	}
-					}else if(a.charAt(i) == '!'){ 
+						else
+							if(value == 2)
+								b = false;
+					}else if(a.charAt(i) == '!'){ //Operador DIFERENTE !=
 					 	if(cont[0] != cont[1]){
+							if(value == 2)
+								b = true;
 					 		return true;
 					 	}
+						else
+							if(value == 2)
+								b = false;
 					}
 
 			}	
@@ -58,6 +79,11 @@
 		return false;
 	}
 
+	public static boolean seElse(boolean b){ //Só existe pra dizer se deve entrar no ELSE ou não!
+		if(b)
+			return true;
+		return false;
+	}
 	public static int linha( String  com[], int i){
 		int x = 0;
 		char aux = com[i].charAt(0);
@@ -66,15 +92,19 @@
 			aux2 = '#';
 		}else if (aux == '.') {
 			aux2 = '*';
+		}else if(aux == ','){
+			aux2 = ':';
 		}
 
 		for (i += 1 ; ((i < com.length) && (com[i] != null)) ; i++  ) {
 			if(aux == com[i].charAt(0)){
 				x++;
-			}else if( aux2 == com[i].charAt(0)){
+			}
+			else if( aux2 == com[i].charAt(0)){
 				if(x == 0){
 					return i;
-				}else{
+				}
+				else{
 					x--;
 				}
 			}

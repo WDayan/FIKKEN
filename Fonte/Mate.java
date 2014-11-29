@@ -1,4 +1,28 @@
 class Mate{
+	private double a,b;
+	private double[] valores = new double[30];
+			
+	public double subtrai(){
+		return a - b;
+	}
+	public double somas(){
+		return a + b;
+	}
+	public double multiplica(){
+		return a * b;
+	}
+	public double divide(){
+		return a / b;
+	}
+	public double resto(){
+		return a % b;
+	}
+
+
+
+
+
+
 	public static double soma(String c, VarU a){
 			
 			String file[] =  c.split("\\+|\\-|\\/|\\*");

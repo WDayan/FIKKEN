@@ -19,9 +19,10 @@ class Fikken{
 			while(conteudo.hasNext()){
 				comandos[i] = conteudo.nextLine();
 				i++;
+				//System.out.println("i = "+i);
 			}
 			
-			f.interpreta(comandos);
+			f.interpreta(comandos);//Chama método pra começar a resolver as coisas. Eh lido LINHA por LINHA
 		
 		}catch(Exception e){
 				System.out.println("Nao e possivel ler o arquivo: " + (args.length > 0 ? args[0] : "(desconhecido)"));

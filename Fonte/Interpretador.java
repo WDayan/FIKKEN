@@ -28,7 +28,7 @@ class Interpretador{
 			scan = new Scanner(System.in);
 	}
 
-	public boolean interpreta(String com[]){
+	public boolean interpreta(String com[]){//Chega aqui a String com o PROGRAMA
 		int i, contv = 0, j;
 		char tok;
 		String aux;
@@ -38,13 +38,16 @@ class Interpretador{
 			com[i]=com[i].trim();
 			com[i]=com[i].replace("fimenquanto","#");
 			com[i]=com[i].replace("fimse","*");
+			com[i]=com[i].replace("else",",");
 			com[i]=com[i].replace("se",".");
 			com[i]=com[i].replace("op","$");
-			com[i]=com[i].replace("se",".");
+			com[i]=com[i].replace("kejo",":");
 			com[i]=com[i].replace("enquanto","@");
 			com[i]=com[i].replace("imprime","%");
 			com[i]=com[i].replace("le","?");
+			
 		}
+		boolean baleado=false;
 
 		for(i = 0; i < (com.length - 1) && com[i] != null; ++i){
 			tok = com[i].charAt(0);
@@ -52,15 +55,21 @@ class Interpretador{
 			aux = aux.trim();
 						
 			
-			switch(tok){
-				case '.':	
-					boolean b = Logico.funcaoSe(var, aux);
-					if(b == false){
+			switch(tok){//Caso IF
+				case '.':
+					baleado = Logico.funcaoSe(var, aux, 2);
+					if(baleado == false){
 						i = Logico.linha(com, i);
 					}
 					break;
-					
+				case ',': //Caso ELSE IF
+					if(baleado){
+						i = Logico.linha(com, i);
+					}
+					break;
 				case '*': 	//fim if
+					break;
+				case ':':   //fim ELSE
 					break;
 					
 				case '$': 	//criar variavel
@@ -73,7 +82,7 @@ class Interpretador{
 					break;
 					
 				case '@':	//while
-					if(Logico.funcaoSe(var, aux) == true){
+					if(Logico.funcaoSe(var, aux, 1) == true){
 						laco.push(i);
 					}else{
 						i = Logico.linha(com, i);
