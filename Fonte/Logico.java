@@ -85,6 +85,7 @@
 			if(aux == com[i].charAt(0)){
 				s = com[i].substring(1);
 				s = s.trim();
+				//System.out.println("S   = "+s);
 				if(name.equals(s)){
 					return i;
 				}

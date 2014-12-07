@@ -142,9 +142,11 @@ class Interpretador{
 				case '[': //Onde está a FUNCAO. Necessário guardar essa posicao
 					salvaFuncao[indice] = i;
 					indice++;
-					String[] nome = aux.split(";");
-					nome[0] = nome[0].trim();
-					i = Logico.achaFuncao(com, i, nome[0]);
+					//System.out.println("Aux == "+aux);
+					//String[] nome = aux.split(";");
+					//nome[0] = nome[0].trim();
+					//System.out.println(nome[2]);
+					i = Logico.achaFuncao(com, i, aux);//nome[0]);
 					jaEntrou++;
 					break;
 				case '-':
