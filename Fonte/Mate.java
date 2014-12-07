@@ -1,6 +1,7 @@
 class Mate{
 	private double a,b;
 	private double[] valores = new double[30];
+	private int LetNum;
 			
 	public double subtrai(){
 		return a - b;
@@ -18,61 +19,6 @@ class Mate{
 		return a % b;
 	}
 	
-	public int ehNegativo(String s, int posicao){ //Recebe no -, Vai descobrir se eh um n° negativo.Devolver 1 => Eh n°. Devolver 2 => Eh toda expressão. 0 não faz nada
-		char c = s.charAt(posicao+1);
-		int i, num = 1, keep = 2;
-		for(i = posicao+2; keep > 1; i++){
-			if(Character.isDigit(c)){
-				num++;
-			}
-			if(c != '+' && c != '-' && c != '*' && c != '/' && c != ' ' && c != ')'){
-				if(num == 2)
-					return 1;
-			}
-			if(c == ')')
-				if(num == 2)
-					return 1;
-			if(c == '('){
-				if(num == 1)
-					return 2;
-			}
-			c = s.charAt(i);
-			if(c == ';')
-				keep = 0;
-		}
-		return 0;
-	}
-	
-	public double fazProximoNumNegativo(String s, int posicao){ //Recebe o -. Vai devolver o próximo n° * -1;
-		char c = s.charAt(posicao+1);
-		int i, keep = 2;
-		String aux = new String();
-		for(i = posicao + 2; keep > 1; i++){
-			if(Character.isDigit(c))
-				aux += c;
-			if(c != '+' && c != '-' && c != '*' && c != '/' && c != ' '){
-				double jaca =  Double.parseDouble(aux);
-				return jaca * -1;
-			}
-			c = s.charAt(i);
-		}
-		return 0;
-	}
-	
-	/*public String achaDouble(String s, int posicao){//Venha a String inteira, e a posicao do começo do numero.
-		String result = new String();
-		char c;
-		do{
-			c = s.charAt(posicao);
-			if(c == '+' || c == ')' || c == '-' || c == '(' || c == '*' || c == '/' || c == ';')
-				posicao = s.length();
-			else{
-				result += c;
-				posicao++;
-			}
-		}while(posicao < s.length());
-		return result.toString();
-	}*/
 
 	public double fazDouble(String s){//Só devolve o número Double já encontrado.
 		return Double.parseDouble(s);
@@ -170,23 +116,11 @@ class Mate{
 		}
 		return Double.parseDouble(numero);	
 	}
-	public int multiplicaPorMenos(String s, int i){
-		char c = s.charAt(i-1);
-		for(i = i-1; c != '*' && c != '/'; i--){
-			c = s.charAt(i);
-			if(i == 0)
-				return 1;
-			if(c == '(' || c == ')')
-				return 1;
-		}
-		return -1;	
-	}
 	
 		public double calcula(String s, int i, VarU v){//Recebe a String, o próximo char depois do '=' e o conjunto de variaveis.
 		//infixaToPosfixa!!
 		char c;
-		//System.out.println("           "+s);
-		int posicao, keep = 1,indice=0, entrou = 2, jacare = 1;
+		int posicao, keep = 1,indice=0;
 		String letras = new String("abcdefghijklmnopqrstuvwxyz");
 		String pilhaInfixa = new String();
 		String result = new String();
@@ -197,7 +131,6 @@ class Mate{
 			if(Character.isLetter(c)){//Se encontrar uma letra,
 				aux = achaTodoONome(s, i-1);
 				result += letras.charAt(indice); //Depois irá colocar um nome temporário, no resultado, deixando tudo como a+b+c-d/e ..... y;
-				//valores[indice] = v[Variavel.achaVariavel(v, aux)].getValor(); //Vai pegar o valor dessa variável e guardá-lo tbm!
 				valores[indice] = v.valorVar(aux);
 				indice++;
 				i = giraAteNaoCaracter(s, i-1);
@@ -212,35 +145,15 @@ class Mate{
 				aux = "";
 			}
 			else if(c == '*' || c == '/' || c == '+' || c == '-' || c == '%'){
-				if(c == '-'){
-					if(ehNegativo(s, i-1) == 2){
-						jacare = multiplicaPorMenos(s, i-1);
-						if(jacare == -1)
-							entrou = 1;
-						else
-							entrou = 2;
-					}
-				}
-				else if(c == '-'){
-					if(ehNegativo(s, i-1) == 1){
-						result += letras.charAt(indice);
-						valores[indice] = fazProximoNumNegativo(s, i-1);
-						indice++;
-						i = giraAteNaoNumero(s, i);
-						entrou = 1;
-					}
-				}
-				else if(posicao > 0 && (prioridade(pilhaInfixa.charAt(posicao-1)) >= prioridade(c))){
+				if(posicao > 0 && (prioridade(pilhaInfixa.charAt(posicao-1)) >= prioridade(c))){
 						result += pilhaInfixa.charAt(posicao-1);
 						pilhaInfixa = deletaChar(pilhaInfixa, posicao-1);
 						posicao--;
-					}
-				if(entrou > 1){
-					pilhaInfixa += c;
-					posicao++;
 				}
-				entrou = 2;
+				pilhaInfixa += c;
+				posicao++;
 			}
+			
 			else if(c == '('){
 				pilhaInfixa += c;
 				posicao++;
@@ -267,7 +180,7 @@ class Mate{
 		
 		//Começa Posfixa!!!
 		double [] pilha = new double[100];
-		posicao = 0;	
+		posicao = 0;
 		for(i = 0; i < result.length(); i++){
 			c = result.charAt(i);
 			if(Character.isLetter(c)){
@@ -302,7 +215,7 @@ class Mate{
 					}
 				}
 			}
-		return pilha[0] * jacare;
+		return pilha[0];
 	}
 
 

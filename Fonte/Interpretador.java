@@ -36,12 +36,12 @@ class Interpretador{
 		for(i = 0 ; i < com.length && com[i] != null; i++){
 			com[i]=com[i].trim();
 			com[i]=com[i].trim();
+			com[i]=com[i].replace("fun:","[");//Para chamar a funcao abacaxi:
 			com[i]=com[i].replace("fimenquanto","#");
 			com[i]=com[i].replace("fimse","*");
 			com[i]=com[i].replace("else",",");
 			com[i]=com[i].replace("se",".");
 			com[i]=com[i].replace("op","$");
-			com[i]=com[i].replace(":","[");//Para chamar a funcao abacaxi:
 			com[i]=com[i].replace("{","+");
 			com[i]=com[i].replace("}","-");
 			com[i]=com[i].replace("end",":");//Fim do ELSE
@@ -50,7 +50,8 @@ class Interpretador{
 			com[i]=com[i].replace("le","?");
 		}
 		boolean baleado=false;
-		int salvaFuncao = 0, jaEntrou = 1;
+		int[] salvaFuncao = new int[100]; 
+		int jaEntrou = 1, indice = 0;
 		Mate mat = new Mate();
 
 		for(i = 0; i < (com.length - 1) && com[i] != null; ++i){
@@ -66,9 +67,10 @@ class Interpretador{
 					}
 					break;
 				case ',': //Caso ELSE IF
-					if(baleado){
+					if(baleado)
 						i = Logico.linha(com, i);
-					}
+					else
+						baleado = true;
 					break;
 				case '*': 	//fim if
 					break;
@@ -80,23 +82,47 @@ class Interpretador{
 					String nok = new String();
 					nova[1] = nova[1].trim();
 					nok = nova[1].substring(0);
-					//double valor = Mate.soma(nova[1], var);
-					int jaka,contador;
-					double value;
+					int jaka,contador, contV, contN,posi=0;
+					double value = 0.0;
 					char jui = ' ';
-					for(jaka=0,contador=0; jaka < nok.length(); ++jaka){
+					for(jaka=0,contador=0, contV=0,contN=0; jaka < nok.length(); ++jaka){
 						jui = nova[1].charAt(jaka);
-						if(jui == '+' || jui == '-' || jui == '*' || jui == '/')
+						if(jui == '+' || jui == '-' || jui == '*' || jui == '/'){
 							contador++;
+							posi = jaka;
+						}
+						if(Character.isLetter(jui))
+							contV++;
+						if(Character.isDigit(jui))
+							contN++;
+					}
+					if((contV == 1 && contador == 1) || (contN == 1 && contador == 1)){
+						jui = nova[1].charAt(posi);
+						String[] nuum;
+						if(jui == '-'){
+							nuum = aux.split("\\=|\\-|\\;");
+						}
+						else
+							nuum = aux.split("\\=|\\;");
+						if(contN == 1){
+							value = Double.parseDouble(nuum[2]) * -1;
+							contador = -1;
+							
+						}
+						if(contV == 1 && jui == '-'){
+							value = Mate.soma(nuum[2], var) * -1;
+							contador = -1;
+						}
 					}
 					if(contador > 0){
 						value = mat.calcula(nok, 0, var);
 					}
-					else{
-						value = Mate.soma(nova[1], var);
+					else if (contador == 0){
+						String[] ki = aux.split("\\=|\\;");
+						value = Mate.soma(ki[1], var);
 					}
 					nova[0] = nova[0].trim();
-					var.atlVar( nova[0] , value);					
+					var.atlVar( nova[0] , value);				
 					break;
 					
 				case '@':	//while
@@ -109,17 +135,15 @@ class Interpretador{
 					
 				case '#':	//fim while
 					if(laco.vazio() == true){
-						//if(com[laco.pop()].charAt(0) == '@'){
 							i = (laco.pop() - 1);
-						//}
 					}
 					break;
 				
 				case '[': //Onde está a FUNCAO. Necessário guardar essa posicao
-					salvaFuncao = i;
+					salvaFuncao[indice] = i;
+					indice++;
 					String[] nome = aux.split(";");
 					nome[0] = nome[0].trim();
-					//System.out.println("NOME = "+nome[0]);
 					i = Logico.achaFuncao(com, i, nome[0]);
 					jaEntrou++;
 					break;
@@ -127,7 +151,8 @@ class Interpretador{
 					jaEntrou--;
 					if(jaEntrou == 0)
 						return true;
-					i = salvaFuncao;
+					indice--;	
+					i = salvaFuncao[indice];
 					break;
 				case '+':
 					return true;

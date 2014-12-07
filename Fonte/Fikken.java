@@ -19,7 +19,6 @@ class Fikken{
 			while(conteudo.hasNext()){
 				comandos[i] = conteudo.nextLine();
 				i++;
-				//System.out.println("i = "+i);
 			}
 			
 			f.interpreta(comandos);//Chama método pra começar a resolver as coisas. Eh lido LINHA por LINHA
