@@ -41,23 +41,22 @@ class Interpretador{
 			com[i]=com[i].replace("else",",");
 			com[i]=com[i].replace("se",".");
 			com[i]=com[i].replace("op","$");
-			com[i]=com[i].replace(";","[");//Para chamar a funcao abacaxi:
+			com[i]=com[i].replace(":","[");//Para chamar a funcao abacaxi:
 			com[i]=com[i].replace("{","+");
 			com[i]=com[i].replace("}","-");
-			com[i]=com[i].replace("kejo",":");//Fim do ELSE
+			com[i]=com[i].replace("end",":");//Fim do ELSE
 			com[i]=com[i].replace("enquanto","@");
 			com[i]=com[i].replace("imprime","%");
 			com[i]=com[i].replace("le","?");
-			//System.out.println("TOK = "+ com[i].charAt(0));
 		}
 		boolean baleado=false;
 		int salvaFuncao = 0, jaEntrou = 1;
+		Mate mat = new Mate();
 
 		for(i = 0; i < (com.length - 1) && com[i] != null; ++i){
 			tok = com[i].charAt(0);
 			aux = com[i].substring(1);
 			aux = aux.trim();
-			
 			
 			switch(tok){//Caso IF
 				case '.':
@@ -78,11 +77,26 @@ class Interpretador{
 					
 				case '$': 	//criar variavel
 					String[] nova = aux.split("=");
+					String nok = new String();
 					nova[1] = nova[1].trim();
-					double valor = Mate.soma(nova[1], var);
+					nok = nova[1].substring(0);
+					//double valor = Mate.soma(nova[1], var);
+					int jaka,contador;
+					double value;
+					char jui = ' ';
+					for(jaka=0,contador=0; jaka < nok.length(); ++jaka){
+						jui = nova[1].charAt(jaka);
+						if(jui == '+' || jui == '-' || jui == '*' || jui == '/')
+							contador++;
+					}
+					if(contador > 0){
+						value = mat.calcula(nok, 0, var);
+					}
+					else{
+						value = Mate.soma(nova[1], var);
+					}
 					nova[0] = nova[0].trim();
-					var.atlVar( nova[0] , valor);
-					
+					var.atlVar( nova[0] , value);					
 					break;
 					
 				case '@':	//while
@@ -104,11 +118,9 @@ class Interpretador{
 				case '[': //Onde está a FUNCAO. Necessário guardar essa posicao
 					salvaFuncao = i;
 					String[] nome = aux.split(";");
-					//System.out.println("i voltou igual a ZERO");
 					nome[0] = nome[0].trim();
 					//System.out.println("NOME = "+nome[0]);
 					i = Logico.achaFuncao(com, i, nome[0]);
-						//System.out.println("i voltou igual a ZERO");
 					jaEntrou++;
 					break;
 				case '-':

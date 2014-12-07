@@ -84,10 +84,7 @@
 		for (i += 1 ; ((i < com.length) && (com[i] != null)) ; i++  ) {
 			if(aux == com[i].charAt(0)){
 				s = com[i].substring(1);
-				//System.out.println("s        "+s);
 				s = s.trim();
-				//String [] auxName = s.split("{");
-				//System.out.println("s = "+s+"  nome = "+name);
 				if(name.equals(s)){
 					return i;
 				}
