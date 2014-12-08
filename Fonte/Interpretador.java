@@ -36,14 +36,14 @@ class Interpretador{
 		for(i = 0 ; i < com.length && com[i] != null; i++){
 			com[i]=com[i].trim();
 			com[i]=com[i].trim();
-			com[i]=com[i].replace("fun:","[");//Para chamar a funcao abacaxi:
+			com[i]=com[i].replace("fun:","[");//Para chamar a funcao
 			com[i]=com[i].replace("fimenquanto","#");
 			com[i]=com[i].replace("fimse","*");
 			com[i]=com[i].replace("else",",");
 			com[i]=com[i].replace("se",".");
 			com[i]=com[i].replace("op","$");
-			com[i]=com[i].replace("{","+");
-			com[i]=com[i].replace("}","-");
+			com[i]=com[i].replace("{","+"); //Onde vai o código da funcao
+			com[i]=com[i].replace("}","-"); //Fechamento da funcao
 			com[i]=com[i].replace("end",":");//Fim do ELSE
 			com[i]=com[i].replace("enquanto","@");
 			com[i]=com[i].replace("imprime","%");
@@ -87,42 +87,42 @@ class Interpretador{
 					char jui = ' ';
 					for(jaka=0,contador=0, contV=0,contN=0; jaka < nok.length(); ++jaka){
 						jui = nova[1].charAt(jaka);
-						if(jui == '+' || jui == '-' || jui == '*' || jui == '/' || jui == '%'){
+						if(jui == '+' || jui == '-' || jui == '*' || jui == '/' || jui == '%'){ //Para saber se existe calculo ou não
 							contador++;
 							posi = jaka;
 						}
-						if(Character.isLetter(jui))
+						if(Character.isLetter(jui)) //Se for letra conta++
 							contV++;
-						if(Character.isDigit(jui))
+						if(Character.isDigit(jui)) //Se for Numero conta++
 							contN++;
 					}
-					if(((contV == 0 || contN == 0) && contador == 1)){
+					if(((contV == 0 || contN == 0) && contador == 1)){ //Só para casos que só existe um operando.
 						jui = nova[1].charAt(posi);
 						String[] nuum;
 						if(jui == '-'){
-							nuum = aux.split("\\=|\\-|\\;");
+							nuum = aux.split("\\=|\\-|\\;"); //Quebra a string
 						}
 						else
-							nuum = aux.split("\\=|\\;");
+							nuum = aux.split("\\=|\\;");//Quebra a string
 						if(contV == 0){
-							value = Double.parseDouble(nuum[2]) * -1;
+							value = Double.parseDouble(nuum[2]) * -1; //Se eh um n° negativo
 							contador = -1;
 							
 						}
 						if(contN == 0 && jui == '-'){
-							value = Mate.soma(nuum[2], var) * -1;
+							value = Mate.soma(nuum[2], var) * -1; //Se eh atribuição negativa. EX; a = -b;
 							contador = -1;
 						}
 					}
-					if(contador > 0){
-						value = mat.calcula(nok, 0, var);
+					if(contador > 0){ //Conta quantos Operandos tem!
+						value = mat.calcula(nok, 0, var); //Calculo Com N expressões
 					}
 					else if (contador == 0){
 						String[] ki = aux.split("\\=|\\;");
 						value = Mate.soma(ki[1], var);
 					}
 					nova[0] = nova[0].trim();
-					var.atlVar( nova[0] , value);				
+					var.atlVar( nova[0] , value); //Verifica se existe a variavel e guarda o valor.				
 					break;
 					
 				case '@':	//while
@@ -140,21 +140,17 @@ class Interpretador{
 					break;
 				
 				case '[': //Onde está a FUNCAO. Necessário guardar essa posicao
-					salvaFuncao[indice] = i;
-					indice++;
-					//System.out.println("Aux == "+aux);
-					//String[] nome = aux.split(";");
-					//nome[0] = nome[0].trim();
-					//System.out.println(nome[2]);
-					i = Logico.achaFuncao(com, i, aux);//nome[0]);
-					jaEntrou++;
+					salvaFuncao[indice] = i; // Salva posicao da funcao num vetor
+					indice++; //O que possibilita aninhamento
+					i = Logico.achaFuncao(com, i, aux);
+					jaEntrou++; //Variavel usada pra saber se jaEntrou na funcao.
 					break;
-				case '-':
+				case '-'://Encontrou o final da funcao
 					jaEntrou--;
 					if(jaEntrou == 0)
-						return true;
-					indice--;	
-					i = salvaFuncao[indice];
+						return true; //Final do programa
+					indice--;
+					i = salvaFuncao[indice];// volta onde está a chamada da funcao
 					break;
 				case '+':
 					return true;

@@ -45,7 +45,7 @@
 						else
 							if(value == 2)
 								b = false;
-					}else if(a.charAt(i) == '<'){
+					}else if(a.charAt(i) == '<'){ //Operador MENOR <
 					 	if(cont[0] < cont[1]){
 							if(value == 2)
 								b = true;

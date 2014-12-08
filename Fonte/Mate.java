@@ -131,20 +131,20 @@ class Mate{
 			if(Character.isLetter(c)){//Se encontrar uma letra,
 				aux = achaTodoONome(s, i-1);
 				result += letras.charAt(indice); //Depois irá colocar um nome temporário, no resultado, deixando tudo como a+b+c-d/e ..... y;
-				valores[indice] = v.valorVar(aux);
+				valores[indice] = v.valorVar(aux);//Pega o valor. e o guarda no mesmo indice
 				indice++;
 				i = giraAteNaoCaracter(s, i-1);
 				aux = "";
 			}
 			else if(Character.isDigit(c)){ //Se encontrar um Numero.
 				aux += achaTodoONumero(s, i-1);
-				result += letras.charAt(indice);
-				valores[indice] = fazDouble(aux);
+				result += letras.charAt(indice); //Guarda indice
+				valores[indice] = fazDouble(aux);//Pega o valor. e o guarda no mesmo indice
 				indice++;
 				i = giraAteNaoNumero(s, i-1);
 				aux = "";
 			}
-			else if(c == '*' || c == '/' || c == '+' || c == '-' || c == '%'){
+			else if(c == '*' || c == '/' || c == '+' || c == '-' || c == '%'){ //Empilha ou não os operadores
 				if(posicao > 0 && (prioridade(pilhaInfixa.charAt(posicao-1)) >= prioridade(c))){
 						result += pilhaInfixa.charAt(posicao-1);
 						pilhaInfixa = deletaChar(pilhaInfixa, posicao-1);
@@ -158,7 +158,7 @@ class Mate{
 				pilhaInfixa += c;
 				posicao++;
 			}
-			else if(c == ')'){
+			else if(c == ')'){ //Desempilha.
 				do{
 					result += pilhaInfixa.charAt(posicao-1);
 					pilhaInfixa = deletaChar(pilhaInfixa, posicao-1);
@@ -191,7 +191,7 @@ class Mate{
 					a = pilha[posicao-2];
 					b = pilha[posicao-1];
 					posicao -= 2;
-					switch(c){
+					switch(c){ //Faz o calculo.
 						case '+':
 							pilha[posicao] = somas();
 							posicao++;
