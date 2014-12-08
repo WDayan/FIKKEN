@@ -1,10 +1,7 @@
 op primo = 0;
 imprime = Numeros primos de 0 -> 100.
-imprime = 
 imprime = 2.0
 fun: primos
-imprime = 
-imprime = Acabou!
 {primos
 	op i = 3;
 	enquanto i < 101
