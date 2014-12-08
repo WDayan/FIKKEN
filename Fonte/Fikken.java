@@ -1,3 +1,20 @@
+/*
+	Codigo original https://github.com/schein00/FIKKEN (autores, Ivair e Schein)
+	
+	Esse codigo foi modificado com as seguintes implementacoes:
+		IF e ELSE
+		funcoes sem parametro
+		expressoes
+		
+	Use esse programa em Java para interpretar codigos .fik 
+	Está incluido na pasta raiz deste programa um manual de operacao
+	Para interpretar um codigo use: java Fikken arquivo.fik
+	Alteracoes por: 
+		Bruno Dall Orsoletta – email br-bruno@hotmail.com
+		Dayan Weber – email weber.dayan@gmail.com
+		https://github.com/WDayan/FIKKEN
+*/
+
 import java.io.File;
 import java.util.Scanner;	
 
