@@ -1,0 +1,26 @@
+op primo = 0;
+imprime = Numeros primos de 0 -> 100.
+imprime = 
+imprime = 2.0
+fun: primos
+imprime = 
+imprime = Acabou!
+{primos
+	op i = 3;
+	enquanto i < 101
+		op a = i;
+		op b = 2;
+		enquanto b < a
+			op c = a % b;
+			se c & 0
+				op primo = 1;
+			fimse
+			op b = b + 1;
+		fimenquanto
+		se primo & 0
+			imprime = a	
+		fimse
+		op primo = 0;
+		op i = i + 2;
+	fimenquanto
+}

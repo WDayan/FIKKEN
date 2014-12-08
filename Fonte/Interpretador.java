@@ -87,7 +87,7 @@ class Interpretador{
 					char jui = ' ';
 					for(jaka=0,contador=0, contV=0,contN=0; jaka < nok.length(); ++jaka){
 						jui = nova[1].charAt(jaka);
-						if(jui == '+' || jui == '-' || jui == '*' || jui == '/'){
+						if(jui == '+' || jui == '-' || jui == '*' || jui == '/' || jui == '%'){
 							contador++;
 							posi = jaka;
 						}
@@ -96,7 +96,7 @@ class Interpretador{
 						if(Character.isDigit(jui))
 							contN++;
 					}
-					if((contV == 1 && contador == 1) || (contN == 1 && contador == 1)){
+					if(((contV == 0 || contN == 0) && contador == 1)){
 						jui = nova[1].charAt(posi);
 						String[] nuum;
 						if(jui == '-'){
@@ -104,12 +104,12 @@ class Interpretador{
 						}
 						else
 							nuum = aux.split("\\=|\\;");
-						if(contN == 1){
+						if(contV == 0){
 							value = Double.parseDouble(nuum[2]) * -1;
 							contador = -1;
 							
 						}
-						if(contV == 1 && jui == '-'){
+						if(contN == 0 && jui == '-'){
 							value = Mate.soma(nuum[2], var) * -1;
 							contador = -1;
 						}
